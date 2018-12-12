@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WeatherAppForms"
+             x:Class="WeatherAppForms.MainPage">
+    <ContentPage.Resources>
+        <Style x:Key="StyleLable" 
+                   TargetType="Label">
+            <Setter Property="FontSize" 
+                        Value="Small" />
+            <Setter Property="TextColor" 
+                        Value="Black" />
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Grid BackgroundColor="#FFFFFF" 
+              Padding="10,20,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Text="City:" 
+                   Grid.Row="0" 
+                   VerticalOptions="Center"
+                   Style="{StaticResource StyleLable}"
+                   TextColor="Black" />
+
+            <Entry x:Name="City"
+                   Grid.Row="1"
+                   Margin="5,0"
+                   VerticalOptions="Center"
+                   BackgroundColor="White"
+                   TextColor="Black" 
+                   Text="{Binding City}"/>
+
+            <Button
+                Grid.Row="2"
+                Text="Get Weather" 
+                Padding="8"
+                Margin="5,0"
+                VerticalOptions="StartAndExpand"
+                HorizontalOptions="Start"
+                BorderWidth="2"
+                BorderColor="DarkGray"
+                BackgroundColor="Yellow"
+                TextColor="Black"
+                Command="{Binding Path=BindingContext.MyCommand,
+                Source={x:Reference City}}"
+                CommandParameter="{Binding}">
+                
+            </Button>
+        </Grid>
+    </StackLayout>
+</ContentPage>
